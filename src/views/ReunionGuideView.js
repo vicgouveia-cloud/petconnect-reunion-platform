@@ -3,12 +3,12 @@ import { store } from '../store.js';
 export function renderReunionGuideView(container, showToast) {
   container.innerHTML = `
     <div class="py-12 bg-background flex-grow">
-      <div class="max-w-6xl mx-auto px-4 sm:px-8 space-y-12">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8 space-y-10">
         
         <!-- Main Header PetSearchers Style -->
         <div class="text-center max-w-4xl mx-auto space-y-4">
           <span class="text-xs uppercase font-extrabold tracking-widest text-primary bg-primary-container/15 px-4 py-1.5 rounded-full border border-primary-container/30">
-            Manual Oficial para Reencontrar Pet Desaparecido • PetSearchers
+            Base Oficial de Conhecimento PetSearchers & Faro
           </span>
           <h1 class="text-3xl sm:text-5xl font-black text-on-surface tracking-tight mt-2">
             Manual para Reencontrar Pet Desaparecido
@@ -18,109 +18,33 @@ export function renderReunionGuideView(container, showToast) {
           </p>
         </div>
 
-        <!-- Section: Cuidando de Você (Apoio Emocional ao Tutor) -->
-        <div class="bg-gradient-to-r from-surface-container via-surface-container-high to-surface-container border border-outline-variant/30 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-          <div class="space-y-2">
-            <h2 class="text-xl font-bold text-on-surface flex items-center gap-2">
-              <span class="material-symbols-outlined text-tertiary">favorite</span>
-              <span>Cuidando de Você</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-              A busca por um amigo perdido é exaustiva e desafiadora. Lembre-se de que sua saúde emocional é vital para continuar esse processo com clareza. Aceite apoio e cuide de si mesmo no caminho. Estamos com você nessa jornada.
-            </p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary text-2xl">air</span>
-              <span class="text-xs font-semibold text-on-surface">Faça pausas conscientes para respirar fundo</span>
-            </div>
-            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary text-2xl">bedtime</span>
-              <span class="text-xs font-semibold text-on-surface">Descanse, mesmo que por períodos curtos</span>
-            </div>
-            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary text-2xl">group</span>
-              <span class="text-xs font-semibold text-on-surface">Delegue pequenas tarefas a amigos</span>
-            </div>
-            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary text-2xl">footprint</span>
-              <span class="text-xs font-semibold text-on-surface">Foque em um passo de cada vez</span>
-            </div>
+        <!-- 5 Tab Navigation -->
+        <div class="flex justify-center border-b border-surface-container-highest pb-4">
+          <div class="inline-flex p-1.5 bg-surface-container rounded-2xl border border-outline-variant/40 shadow-inner flex-wrap justify-center gap-2">
+            <button id="guide-tab-general" class="px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">menu_book</span>
+              <span>Instruções Gerais (Todos os Pets)</span>
+            </button>
+            <button id="guide-tab-dogs" class="px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">sound_detection_dog_barking</span>
+              <span>Guia para Cachorros</span>
+            </button>
+            <button id="guide-tab-cats" class="px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">cat</span>
+              <span>Guia para Gatos + Vídeo de Sons</span>
+            </button>
+            <button id="guide-tab-scams" class="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg text-amber-400">gavel</span>
+              <span>Segurança & Antigolpe</span>
+            </button>
+            <button id="guide-tab-poster" class="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">print</span>
+              <span>Gerador de Cartaz</span>
+            </button>
           </div>
         </div>
 
-        <!-- 4 Quick Summary Action Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg hover:border-primary-container/40 transition-all">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">explore</span>
-              <span>Onde Procurar</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              Faça uma varredura em espiral partindo do ponto de fuga. Cachorros costumam seguir cheiros ou buscar abrigo em locais conhecidos em um raio inicial de 1 a 3 km.
-            </p>
-          </div>
-
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg hover:border-primary-container/40 transition-all">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">timer</span>
-              <span>Ações Imediatas</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              As primeiras horas são as mais críticas. Manter a calma e agir com método é o que trará seu cão de volta para casa.
-            </p>
-          </div>
-
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg hover:border-primary-container/40 transition-all">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">record_voice_over</span>
-              <span>Quem Avisar</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              Notifique veterinários locais, ONGs, pet shops e vizinhos. Pessoas que circulam na região, como entregadores, são seus melhores aliados agora.
-            </p>
-          </div>
-
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg hover:border-primary-container/40 transition-all">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">visibility</span>
-              <span>O que Observar</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              Fique atento a sinais comportamentais: cães assustados tendem a se esconder sob carros ou arbustos e podem não responder ao chamado logo de cara.
-            </p>
-          </div>
-        </div>
-
-        <!-- Species Selector Tabs -->
-        <div class="space-y-4">
-          <div class="text-center">
-            <h2 class="text-xl font-extrabold text-on-surface">Escolha o guia ideal para o seu pet</h2>
-            <p class="text-xs text-on-surface-variant mt-1">Clique em "Ver guia de cães" ou "Ver guia de gatos" para seguir o passo a passo ideal e aumentar as chances de reencontro.</p>
-          </div>
-          <div class="flex justify-center border-b border-surface-container-highest pb-4">
-            <div class="inline-flex p-1.5 bg-surface-container rounded-2xl border border-outline-variant/40 shadow-inner flex-wrap justify-center gap-2">
-              <button id="guide-tab-dogs" class="px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-lg">sound_detection_dog_barking</span>
-                <span>Ver guia de cães</span>
-              </button>
-              <button id="guide-tab-cats" class="px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-lg">cat</span>
-                <span>Ver guia de gatos</span>
-              </button>
-              <button id="guide-tab-scams" class="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-lg text-amber-400">gavel</span>
-                <span>Segurança & Antigolpe</span>
-              </button>
-              <button id="guide-tab-poster" class="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined text-lg">print</span>
-                <span>Gerador de Cartaz</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dynamic Guide Content Area -->
+        <!-- Dynamic Content Area -->
         <div id="guide-content" class="space-y-8">
           <!-- Rendered dynamically -->
         </div>
@@ -129,7 +53,146 @@ export function renderReunionGuideView(container, showToast) {
     </div>
   `;
 
-  // DOG GUIDE (PetSearchers Exact Manual)
+  // 1. GENERAL INSTRUCTIONS (PetSearchers instrucoes-para-recuperacao)
+  const generalGuideHtml = `
+    <div class="space-y-8 animate-fade-in">
+      
+      <!-- Cuidando de Você Section -->
+      <div class="bg-gradient-to-r from-surface-container via-surface-container-high to-surface-container border border-outline-variant/30 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-black text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-tertiary">favorite</span>
+            <span>Cuidando de Você</span>
+          </h2>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            A busca por um amigo perdido é exaustiva e desafiadora. Lembre-se de que sua saúde emocional é vital para continuar esse processo com clareza. Aceite apoio e cuide de si mesmo no caminho. Estamos com você nessa jornada.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-2xl">air</span>
+            <span class="text-xs font-semibold text-on-surface">Faça pausas conscientes para respirar fundo</span>
+          </div>
+          <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-2xl">bedtime</span>
+            <span class="text-xs font-semibold text-on-surface">Descanse, mesmo que por períodos curtos</span>
+          </div>
+          <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-2xl">group</span>
+            <span class="text-xs font-semibold text-on-surface">Delegue pequenas tarefas a amigos</span>
+          </div>
+          <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-2xl">footprint</span>
+            <span class="text-xs font-semibold text-on-surface">Foque em um passo de cada vez</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intro Section -->
+      <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 space-y-3 shadow-xl">
+        <h3 class="text-xl font-bold text-on-surface">Dicas Gerais de Reencontro de Pets Perdidos</h3>
+        <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+          Este guia oferece uma base sólida para qualquer pet perdido (cães, gatos, aves ou exóticos). Ter uma estratégia estruturada é o primeiro passo para o sucesso. Respire fundo, vamos começar.
+        </p>
+      </div>
+
+      <!-- Protocols in the First Hours -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">door_front</span>
+            <span>Isolamento da Área</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Verifique imediatamente todos os pontos de saída da sua residência e arredores. Algumas espécies se escondem muito perto de onde fugiram.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">child_care</span>
+            <span>Objetos de Cheiro</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Coloque a caminha, mantas ou brinquedos favoritos do lado de fora. O olfato é a bússola emocional para o pet estressado encontrar o caminho de casa.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">campaign</span>
+            <span>Alertas Vizinhos</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Comunique vizinhos e porteiros imediatamente. Muitas vezes o pet é acolhido por alguém próximo minutos após a fuga.
+          </p>
+        </div>
+      </div>
+
+      <!-- First Hours Actions Detailed List -->
+      <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h3 class="text-lg font-bold text-on-surface">Primeiras Horas: Ações Imediatas</h3>
+        <ul class="text-xs sm:text-sm text-on-surface-variant space-y-3 list-disc list-inside leading-relaxed">
+          <li><strong class="text-on-surface">Busque na vizinhança imediata:</strong> A maioria dos pets permanece a poucos metros de casa nas primeiras horas. Chame pelo nome com voz calma, cheque garagens e casas vizinhas.</li>
+          <li><strong class="text-on-surface">Verifique abrigos e clínicas:</strong> Entre em contato com CCZs, ONGs locais e clínicas veterinárias próximas. Alguém pode ter encontrado seu amigo e levado para um local seguro.</li>
+          <li><strong class="text-on-surface">Ative alertas em redes sociais:</strong> Poste fotos nítidas e informações de contato em grupos de bairro. O engajamento digital é vital para que a notícia chegue a quem viu o animal.</li>
+        </ul>
+      </div>
+
+      <!-- Mobilizing Community & Digital Campaigns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">groups</span>
+            <span>Envolvendo a Comunidade</span>
+          </h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            A mobilização física é fundamental. Fale pessoalmente com vizinhos, porteiros, comércios locais e clínicas veterinárias da região. Deixe cartazes bem visíveis em pontos de alta circulação e peça permissão para fixá-los em quadros de avisos de condomínios e abrigos próximos. A união da vizinhança é um braço forte na busca.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">cell_tower</span>
+            <span>Campanhas Digitais e Geolocalização</span>
+          </h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Utilize os anúncios precisos para envolver vizinhos, comércios locais e abrigos no raio exato onde seu pet sumiu. Nossas redes sociais e grupos locais ampliam o alcance da busca de forma estratégica e eficiente. A tecnologia é agora sua maior aliada.
+          </p>
+        </div>
+      </div>
+
+      <!-- Additional Resources & Prevention -->
+      <div class="bg-surface-container border border-outline-variant/30 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h3 class="text-lg font-bold text-on-surface flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">verified_user</span>
+          <span>Recursos Adicionais e Prevenção</span>
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-on-surface-variant pt-2">
+          <div class="bg-surface-container-high p-4 rounded-xl space-y-1 border border-outline-variant/20">
+            <strong class="text-on-surface font-bold text-xs block">Registro de Microchip</strong>
+            <p>Mantenha os dados de contato do microchip sempre atualizados em bancos de dados nacionais.</p>
+          </div>
+          <div class="bg-surface-container-high p-4 rounded-xl space-y-1 border border-outline-variant/20">
+            <strong class="text-on-surface font-bold text-xs block">Coleiras e Identificação</strong>
+            <p>Use coleiras com placas de identificação legíveis e QR Codes que facilitem o contato imediato.</p>
+          </div>
+          <div class="bg-surface-container-high p-4 rounded-xl space-y-1 border border-outline-variant/20">
+            <strong class="text-on-surface font-bold text-xs block">Portões e Perímetros</strong>
+            <p>Revise regularmente portões, telas e muros para garantir que não existam rotas de fuga.</p>
+          </div>
+          <div class="bg-surface-container-high p-4 rounded-xl space-y-1 border border-outline-variant/20">
+            <strong class="text-on-surface font-bold text-xs block">Hábitos de Segurança</strong>
+            <p>Mantenha o pet sempre na guia em locais abertos e use redes de proteção em apartamentos.</p>
+          </div>
+        </div>
+        <p class="text-xs text-on-surface-variant italic pt-2 text-center">"Prevenir é o maior ato de amor contínuo. Sua dedicação hoje é a segurança do amanhã."</p>
+      </div>
+
+    </div>
+  `;
+
+  // 2. DOG GUIDE (PetSearchers achar-cachorro-desaparecido / guia-de-reencontro-para-cachorros)
   const dogGuideHtml = `
     <div class="space-y-8 animate-fade-in">
       
@@ -139,8 +202,51 @@ export function renderReunionGuideView(container, showToast) {
           <span>Como encontrar cachorro perdido: guia completo para aumentar as chances de reencontro</span>
         </h2>
         <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-          Perder um cão é um momento de angústia profunda, mas saiba que estamos aqui para guiar seus passos. O tempo é seu recurso mais valioso agora, e agir com rapidez e estratégia faz toda a diferença. Criamos um plano organizado para ajudar você a manter a calma e focar nas ações que trazem resultados reais.
+          Perder um cão é um momento de angústia profunda, mas saiba que estamos aqui para guiar seus passos. O tempo é seu recurso mais valioso agora, e agir com rapidez e estratégia faz toda a diferença. Criamos um plano organizado para ajudar você a manter a calma e focar nas ações que trazem resultados reais. Você não está sozinho. Respire fundo e vamos começar a busca juntos.
         </p>
+      </div>
+
+      <!-- 4 Quick Summary Action Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">explore</span>
+            <span>Onde Procurar</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Faça uma varredura em espiral partindo do ponto de fuga. Cachorros costumam seguir cheiros ou buscar abrigo em locais conhecidos em um raio inicial de 1 a 3 km.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">timer</span>
+            <span>Ações Imediatas</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            As primeiras horas são as mais críticas. Manter a calma e agir com método é o que trará seu cão de volta para casa.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">record_voice_over</span>
+            <span>Quem Avisar</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Notifique veterinários locais, ONGs, pet shops e vizinhos. Pessoas que circulam na região, como entregadores, são seus melhores aliados agora.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined">visibility</span>
+            <span>O que Observar</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Fique atento a sinais comportamentais: cães assustados tendem a se esconder sob carros ou arbustos e podem não responder ao chamado logo de cara.
+          </p>
+        </div>
       </div>
 
       <!-- Grid of Steps 1 to 6 -->
@@ -253,7 +359,7 @@ export function renderReunionGuideView(container, showToast) {
     </div>
   `;
 
-  // CAT GUIDE (PetSearchers Exact Manual)
+  // 3. CAT GUIDE (PetSearchers guia-de-reencontro-para-gatos WITH YOUTUBE VIDEO EMBED)
   const catGuideHtml = `
     <div class="space-y-8 animate-fade-in">
       
@@ -263,24 +369,50 @@ export function renderReunionGuideView(container, showToast) {
           <span>Como encontrar gato perdido: guia completo para aumentar as chances de reencontro</span>
         </h2>
         <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-          Criamos este guia para ajudar tutores de gatos perdidos a agir rápido, organizar a busca e aumentar as chances de reencontro. Saiba que você não está sozinho nessa jornada e cada passo estratégico aproxima seu pet de casa.
+          Criamos este guia para ajudar tutores de gatos perdidos a agir rápido, organizar a busca e aumentar as chances de reencontro. Saiba que você não está sozinho nessa jornada e cada passo estratégico aproxima seu pet de casa. Gatos têm um instinto de sobrevivência incrível e muitos são encontrados a poucos metros de casa, apenas esperando o momento em que se sintam seguros para sair do esconderijo.
         </p>
       </div>
 
-      <!-- Interactive Sound Generator Player -->
-      <div class="bg-surface-container border border-tertiary-container/30 rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-bold text-on-surface flex items-center gap-2">
-            <span class="material-symbols-outlined text-tertiary">volume_up</span>
-            <span>Player com Sons para Atrair Gato Perdido (PetSearchers Pattern)</span>
-          </h3>
-          <span class="text-xs text-tertiary font-semibold">Tocar no silêncio da madrugada</span>
+      <!-- OFFICIAL PETSEARCHERS YOUTUBE EMBEDDED VIDEO -->
+      <div class="bg-surface-container border border-tertiary-container/40 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-outline-variant/20 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-red-500 text-2xl">play_circle</span>
+            <h3 class="text-lg font-extrabold text-on-surface">Vídeo com Sons para Atrair seu Gato (Canal Oficial PetSearchers)</h3>
+          </div>
+          <span class="text-xs text-tertiary font-semibold bg-tertiary-container/10 px-3 py-1 rounded-full border border-tertiary-container/20">
+            Reproduzir na madrugada (02h às 04h)
+          </span>
         </div>
+
         <p class="text-xs text-on-surface-variant leading-relaxed">
-          Você pode dar play perto de casa ou andando pelas redondezas para tentar chamar o gato perdido através de sons familiares e atrativos (frequências de filhotes, sachês e ronronar).
+          Abaixo você encontra o vídeo oficial da Pet Searchers com sons que atraem gatos. Você pode dar play no seu computador ou celular perto de casa ou andando pelas redondezas para tentar chamar o gato perdido através de sons familiares e atrativos — preferencialmente no fim da noite ou início da madrugada, quando as ruas estão mais silenciosas.
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+        <!-- YouTube Video Iframe Embed -->
+        <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/30 bg-black">
+          <iframe 
+            class="absolute inset-0 w-full h-full"
+            src="https://www.youtube-nocookie.com/embed/4RQD-MG3XJU?rel=0&autoplay=0" 
+            title="Vídeo com sons para atrair seu gato | PetSearchers" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Native Web Audio Sound Generator Alternative -->
+      <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-base font-bold text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">volume_up</span>
+            <span>Gerador Nativo de Frequências de Atração Felina</span>
+          </h3>
+          <span class="text-xs text-primary font-semibold">Sem consumir dados móveis</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
           <button id="play-sound-meow" class="bg-surface-container-high hover:bg-surface-variant text-on-surface font-bold text-xs p-4 rounded-2xl border border-outline-variant/40 flex items-center justify-center gap-3 transition-all">
             <span class="material-symbols-outlined text-primary text-xl">play_circle</span>
             <span>Miado Suave de Filhote</span>
@@ -296,33 +428,66 @@ export function renderReunionGuideView(container, showToast) {
         </div>
       </div>
 
+      <!-- Cat Specific Step Sections -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
-          <h3 class="font-bold text-base text-on-surface">🏠 Procure Minuciosamente Dentro de Casa</h3>
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">home</span>
+            <span>🏠 Procure Minuciosamente Dentro de Casa</span>
+          </h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">
             Gatos são mestres do esconderijo. Verifique o interior de sofás, vãos atrás da geladeira, forros de teto e prateleiras altas antes de assumir que ele saiu de casa.
           </p>
         </div>
 
         <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
-          <h3 class="font-bold text-base text-on-surface">🌸 Estação de Cheiro & Alimentos Aromáticos</h3>
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">local_florist</span>
+            <span>🌸 Estação de Cheiro & Alimentos Aromáticos</span>
+          </h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">
-            Coloque a caixa de areia usada na entrada da casa ou janela de fácil acesso. Aqueça sachês de carne ou atum para espalhar um forte odor atrativo.
+            Coloque a caixa de areia usada na entrada da casa ou janela de fácil acesso. O odor familiar é o guia mais forte. Aqueça um sachê de carne ou atum para espalhar o aroma.
           </p>
         </div>
 
         <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
-          <h3 class="font-bold text-base text-on-surface">🔍 Fale com Vizinhos & Inspecione Garagens</h3>
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">search</span>
+            <span>🔍 Procurando nos Arredores (Garagens & Jardins)</span>
+          </h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">
-            Peça permissão para VOCÊ olhar nos jardins e garagens dos vizinhos. Gatos assustados não respondem ao chamado de pessoas estranhas.
+            Fale com vizinhos e porteiros e peça permissão para VOCÊ olhar nos jardins e garagens deles. Gatos assustados geralmente não respondem ao chamado de estranhos.
           </p>
         </div>
 
         <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
-          <h3 class="font-bold text-base text-on-surface">🌙 Busque no Silêncio da Madrugada (02h às 04h)</h3>
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">bedtime</span>
+            <span>🌙 Busque no Silêncio da Madrugada (02h às 04h)</span>
+          </h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">
-            O barulho do dia assusta os gatos. Entre 02h e 04h da manhã é o melhor horário para ouvir miados ou detectar o brilho dos olhos com lanterna sob muros e carros.
+            O barulho do dia assusta os gatos. Entre 02h e 04h da manhã é o melhor horário para ouvir miados ou ver o reflexo dos olhos com lanterna em muros, carros e telhados.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">campaign</span>
+            <span>📢 Comunidade e Redes Sociais</span>
+          </h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Divulgue rapidamente com fotos nítidas e peça que as pessoas apenas observem e informem o local. Afixe cartazes em locais defensivos (próximos a arbustos) e em nível baixo.
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-3 shadow-lg">
+          <h3 class="font-bold text-base text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-400">warning</span>
+            <span>⚠️ Sinais de Alerta: Saúde e Medo</span>
+          </h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Um gato ferido ou extremamente aterrorizado ficará em silêncio absoluto por dias. Não desista se ele não responder logo de início. Se estiver machucado, procurará locais escuros (como vãos de motores de carros estacionados).
           </p>
         </div>
 
@@ -331,7 +496,7 @@ export function renderReunionGuideView(container, showToast) {
     </div>
   `;
 
-  // SCAM PREVENTION CONTENT
+  // 4. SCAM PREVENTION CONTENT
   const scamPreventionHtml = `
     <div class="space-y-8 animate-fade-in">
       <div class="bg-gradient-to-r from-amber-500/20 via-surface-container-high to-surface-container border border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-xl space-y-3">
@@ -365,7 +530,7 @@ export function renderReunionGuideView(container, showToast) {
     </div>
   `;
 
-  // POSTER GENERATOR CONTENT
+  // 5. POSTER GENERATOR CONTENT
   const posterGeneratorHtml = `
     <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 animate-fade-in">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-outline-variant/20 pb-4">
@@ -436,29 +601,36 @@ export function renderReunionGuideView(container, showToast) {
   `;
 
   const contentEl = container.querySelector('#guide-content');
-  // Default tab: Dog Guide (Pet Searchers)
-  contentEl.innerHTML = dogGuideHtml;
+  // Default tab: General Instructions (Pet Searchers instrucoes-para-recuperacao)
+  contentEl.innerHTML = generalGuideHtml;
 
+  const tabGeneral = container.querySelector('#guide-tab-general');
   const tabDogs = container.querySelector('#guide-tab-dogs');
   const tabCats = container.querySelector('#guide-tab-cats');
   const tabScams = container.querySelector('#guide-tab-scams');
   const tabPoster = container.querySelector('#guide-tab-poster');
 
   const resetTabStyles = () => {
-    [tabDogs, tabCats, tabScams, tabPoster].forEach(btn => {
+    [tabGeneral, tabDogs, tabCats, tabScams, tabPoster].forEach(btn => {
       if (btn) btn.className = 'px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2';
     });
   };
 
+  tabGeneral?.addEventListener('click', () => {
+    resetTabStyles();
+    tabGeneral.className = 'px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2';
+    contentEl.innerHTML = generalGuideHtml;
+  });
+
   tabDogs?.addEventListener('click', () => {
     resetTabStyles();
-    tabDogs.className = 'px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2';
+    tabDogs.className = 'px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2';
     contentEl.innerHTML = dogGuideHtml;
   });
 
   tabCats?.addEventListener('click', () => {
     resetTabStyles();
-    tabCats.className = 'px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-secondary-container text-on-secondary-container shadow-md transition-all flex items-center gap-2';
+    tabCats.className = 'px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-secondary-container text-on-secondary-container shadow-md transition-all flex items-center gap-2';
     contentEl.innerHTML = catGuideHtml;
     attachAudioListeners();
   });

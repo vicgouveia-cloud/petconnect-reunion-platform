@@ -151,53 +151,31 @@ export function renderHomeView(container, showToast, openPetModal) {
           </div>
         </div>
 
-        <!-- 4 Action Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">explore</span>
-              <span>Onde Procurar</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              Faça uma varredura em espiral partindo do ponto de fuga em um raio inicial de 1 a 3 km.
-            </p>
+        <!-- PETSEARCHERS YOUTUBE EMBED IN HOME PAGE -->
+        <div class="bg-surface-container border border-tertiary-container/30 rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-red-500 text-2xl">play_circle</span>
+            <h3 class="text-base font-extrabold text-on-surface">Vídeo Oficial PetSearchers: Sons para Atrair seu Gato Perdido</h3>
           </div>
-
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">timer</span>
-              <span>Ações Imediatas</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              As primeiras horas são as mais críticas. Agir com método é o que trará seu cão de volta.
-            </p>
-          </div>
-
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">record_voice_over</span>
-              <span>Quem Avisar</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              Notifique veterinários locais, ONGs, pet shops, vizinhos e entregadores de aplicativo.
-            </p>
-          </div>
-
-          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
-            <div class="flex items-center gap-2 text-primary font-bold text-sm">
-              <span class="material-symbols-outlined">visibility</span>
-              <span>O que Observar</span>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              Cães assustados tendem a se esconder sob carros ou arbustos e podem não responder logo.
-            </p>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Você pode dar play perto de casa ou andando pelas redondezas para tentar chamar o gato perdido através de sons familiares e atrativos — preferencialmente no fim da noite ou início da madrugada (02h às 04h).
+          </p>
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/30 bg-black max-w-3xl mx-auto">
+            <iframe 
+              class="absolute inset-0 w-full h-full"
+              src="https://www.youtube-nocookie.com/embed/4RQD-MG3XJU?rel=0&autoplay=0" 
+              title="Vídeo com sons para atrair seu gato | PetSearchers" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
           </div>
         </div>
 
         <div class="text-center pt-2">
           <a href="#/guia" class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container font-extrabold text-sm px-8 py-3.5 rounded-full hover:bg-primary-container/90 transition-all shadow-xl">
             <span class="material-symbols-outlined">menu_book</span>
-            <span>Acessar Guia Detalhado de Cães e Gatos (Pet Searchers)</span>
+            <span>Acessar Todos os 3 Manuais (Gerais, Cães e Gatos + Vídeo YouTube)</span>
           </a>
         </div>
 
