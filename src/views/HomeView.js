@@ -39,9 +39,9 @@ export function renderHomeView(container, showToast, openPetModal) {
               <span class="material-symbols-outlined group-hover:scale-110 transition-transform">search</span>
               <span>Perdi um Pet</span>
             </a>
-            <a href="#/cadastrar?status=found" class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-base px-8 py-4 rounded-full border border-outline-variant/60 transition-all shadow-lg flex items-center justify-center gap-3 group active:scale-95">
-              <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">add_location_alt</span>
-              <span>Encontrei um Pet</span>
+            <a href="#/guia" class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-base px-8 py-4 rounded-full border border-outline-variant/60 transition-all shadow-lg flex items-center justify-center gap-3 group active:scale-95">
+              <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">menu_book</span>
+              <span>Abrir Manual Completo</span>
             </a>
           </div>
 
@@ -103,6 +103,104 @@ export function renderHomeView(container, showToast, openPetModal) {
             </form>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- SECTION: MANUAL PARA REENCONTRAR PET DESAPARECIDO (Pet Searchers) -->
+    <section class="py-16 bg-surface-container-low border-y border-surface-container-highest">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <span class="text-xs uppercase font-extrabold tracking-widest text-primary bg-primary-container/15 px-3 py-1 rounded-full border border-primary-container/30">
+            Manual Oficial Pet Searchers
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-on-surface tracking-tight">
+            Manual para Reencontrar Pet Desaparecido
+          </h2>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            Entendemos sua dor e estamos aqui para apoiar. Agir com calma e método nas primeiras 48 horas é vital para trazer seu amigo para casa em segurança.
+          </p>
+        </div>
+
+        <!-- Cuidando de Você (Support Cards) -->
+        <div class="bg-gradient-to-r from-surface-container via-surface-container-high to-surface-container border border-outline-variant/30 rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
+          <h3 class="text-lg font-bold text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-tertiary">favorite</span>
+            <span>Cuidando de Você</span>
+          </h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            A busca por um amigo perdido é exaustiva e desafiadora. Lembre-se de que sua saúde emocional é vital para continuar esse processo com clareza. Aceite apoio e cuide de si mesmo no caminho.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">air</span>
+              <span class="text-xs font-semibold text-on-surface">Faça pausas conscientes para respirar fundo</span>
+            </div>
+            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">bedtime</span>
+              <span class="text-xs font-semibold text-on-surface">Descanse, mesmo que por períodos curtos</span>
+            </div>
+            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">group</span>
+              <span class="text-xs font-semibold text-on-surface">Delegue pequenas tarefas a amigos</span>
+            </div>
+            <div class="bg-surface-container-lowest/80 p-4 rounded-2xl border border-outline-variant/20 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">footprint</span>
+              <span class="text-xs font-semibold text-on-surface">Foque em um passo de cada vez</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Action Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+            <div class="flex items-center gap-2 text-primary font-bold text-sm">
+              <span class="material-symbols-outlined">explore</span>
+              <span>Onde Procurar</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              Faça uma varredura em espiral partindo do ponto de fuga em um raio inicial de 1 a 3 km.
+            </p>
+          </div>
+
+          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+            <div class="flex items-center gap-2 text-primary font-bold text-sm">
+              <span class="material-symbols-outlined">timer</span>
+              <span>Ações Imediatas</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              As primeiras horas são as mais críticas. Agir com método é o que trará seu cão de volta.
+            </p>
+          </div>
+
+          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+            <div class="flex items-center gap-2 text-primary font-bold text-sm">
+              <span class="material-symbols-outlined">record_voice_over</span>
+              <span>Quem Avisar</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              Notifique veterinários locais, ONGs, pet shops, vizinhos e entregadores de aplicativo.
+            </p>
+          </div>
+
+          <div class="bg-surface-container border border-surface-container-highest rounded-2xl p-6 space-y-2 shadow-lg">
+            <div class="flex items-center gap-2 text-primary font-bold text-sm">
+              <span class="material-symbols-outlined">visibility</span>
+              <span>O que Observar</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              Cães assustados tendem a se esconder sob carros ou arbustos e podem não responder logo.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <a href="#/guia" class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container font-extrabold text-sm px-8 py-3.5 rounded-full hover:bg-primary-container/90 transition-all shadow-xl">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span>Acessar Guia Detalhado de Cães e Gatos (Pet Searchers)</span>
+          </a>
+        </div>
+
       </div>
     </section>
 
