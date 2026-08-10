@@ -18,35 +18,16 @@ export function renderReunionGuideView(container, showToast) {
           </p>
         </div>
 
-        <!-- 5 Tab Navigation -->
-        <div class="flex justify-center border-b border-surface-container-highest pb-4">
-          <div class="inline-flex p-1.5 bg-surface-container rounded-2xl border border-outline-variant/40 shadow-inner flex-wrap justify-center gap-2">
-            <button id="guide-tab-general" class="px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg">menu_book</span>
-              <span>Instruções Gerais (Todos os Pets)</span>
-            </button>
-            <button id="guide-tab-dogs" class="px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg">sound_detection_dog_barking</span>
-              <span>Guia para Cachorros</span>
-            </button>
-            <button id="guide-tab-cats" class="px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg">cat</span>
-              <span>Guia para Gatos + Vídeo de Sons</span>
-            </button>
-            <button id="guide-tab-scams" class="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg text-amber-400">gavel</span>
-              <span>Segurança & Antigolpe</span>
-            </button>
-            <button id="guide-tab-poster" class="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg">print</span>
-              <span>Gerador de Cartaz</span>
-            </button>
-          </div>
+        <!-- Notice Banner -->
+        <div class="bg-primary-container/10 border border-primary-container/30 rounded-2xl p-4 text-center">
+          <p class="text-xs font-bold text-primary">
+            👇 Role a página para ver todos os Manuais Oficiais PetSearchers na íntegra (Instruções Gerais, Cães, Gatos com Vídeo, Antigolpe e Gerador de Cartazes).
+          </p>
         </div>
 
-        <!-- Dynamic Content Area -->
-        <div id="guide-content" class="space-y-8">
-          <!-- Rendered dynamically -->
+        <!-- Single Continuous Content Stream -->
+        <div id="guide-content" class="space-y-16">
+          <!-- Rendered sequentially below -->
         </div>
 
       </div>
@@ -601,52 +582,51 @@ export function renderReunionGuideView(container, showToast) {
   `;
 
   const contentEl = container.querySelector('#guide-content');
-  // Default tab: General Instructions (Pet Searchers instrucoes-para-recuperacao)
-  contentEl.innerHTML = generalGuideHtml;
+  // Render ALL 5 sections sequentially in a single continuous stream
+  contentEl.innerHTML = `
+    <div id="section-general" class="space-y-6 border-b border-surface-container-highest pb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary-container/20 text-primary text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">menu_book</span>
+        <span>Parte 1: Instruções Gerais (Todos os Pets)</span>
+      </div>
+      ${generalGuideHtml}
+    </div>
 
-  const tabGeneral = container.querySelector('#guide-tab-general');
-  const tabDogs = container.querySelector('#guide-tab-dogs');
-  const tabCats = container.querySelector('#guide-tab-cats');
-  const tabScams = container.querySelector('#guide-tab-scams');
-  const tabPoster = container.querySelector('#guide-tab-poster');
+    <div id="section-dogs" class="space-y-6 border-b border-surface-container-highest pb-12 pt-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary-container/20 text-primary text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">sound_detection_dog_barking</span>
+        <span>Parte 2: Guia Completo para Cachorros</span>
+      </div>
+      ${dogGuideHtml}
+    </div>
 
-  const resetTabStyles = () => {
-    [tabGeneral, tabDogs, tabCats, tabScams, tabPoster].forEach(btn => {
-      if (btn) btn.className = 'px-5 py-3 rounded-xl font-bold text-xs sm:text-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-2';
-    });
-  };
+    <div id="section-cats" class="space-y-6 border-b border-surface-container-highest pb-12 pt-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-container/20 text-secondary text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">cat</span>
+        <span>Parte 3: Guia Completo para Gatos + Vídeo de Sons do YouTube</span>
+      </div>
+      ${catGuideHtml}
+    </div>
 
-  tabGeneral?.addEventListener('click', () => {
-    resetTabStyles();
-    tabGeneral.className = 'px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2';
-    contentEl.innerHTML = generalGuideHtml;
-  });
+    <div id="section-scams" class="space-y-6 border-b border-surface-container-highest pb-12 pt-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">gavel</span>
+        <span>Parte 4: Segurança & Antigolpe</span>
+      </div>
+      ${scamPreventionHtml}
+    </div>
 
-  tabDogs?.addEventListener('click', () => {
-    resetTabStyles();
-    tabDogs.className = 'px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-primary-container text-on-primary-container shadow-md transition-all flex items-center gap-2';
-    contentEl.innerHTML = dogGuideHtml;
-  });
+    <div id="section-poster" class="space-y-6 pt-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-tertiary-container/20 text-tertiary text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-sm">print</span>
+        <span>Parte 5: Gerador de Cartaz de Busca Impresso</span>
+      </div>
+      ${posterGeneratorHtml}
+    </div>
+  `;
 
-  tabCats?.addEventListener('click', () => {
-    resetTabStyles();
-    tabCats.className = 'px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm bg-secondary-container text-on-secondary-container shadow-md transition-all flex items-center gap-2';
-    contentEl.innerHTML = catGuideHtml;
-    attachAudioListeners();
-  });
-
-  tabScams?.addEventListener('click', () => {
-    resetTabStyles();
-    tabScams.className = 'px-5 py-3 rounded-xl font-bold text-xs sm:text-sm bg-amber-500 text-black shadow-md transition-all flex items-center gap-2';
-    contentEl.innerHTML = scamPreventionHtml;
-  });
-
-  tabPoster?.addEventListener('click', () => {
-    resetTabStyles();
-    tabPoster.className = 'px-5 py-3 rounded-xl font-bold text-xs sm:text-sm bg-tertiary-container text-on-tertiary-container shadow-md transition-all flex items-center gap-2';
-    contentEl.innerHTML = posterGeneratorHtml;
-    attachPosterListeners();
-  });
+  attachAudioListeners();
+  attachPosterListeners();
 
   function attachAudioListeners() {
     const playAudio = (type) => {
