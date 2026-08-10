@@ -1,6 +1,6 @@
 import { store } from '../store.js';
 
-export function renderReunionGuideView(container, showToast) {
+export function renderReunionGuideView(container, showToast, targetSection = null) {
   container.innerHTML = `
     <div class="py-12 bg-background flex-grow">
       <div class="max-w-6xl mx-auto px-4 sm:px-8 space-y-10">
@@ -8,7 +8,7 @@ export function renderReunionGuideView(container, showToast) {
         <!-- Main Header PetSearchers Style -->
         <div class="text-center max-w-4xl mx-auto space-y-4">
           <span class="text-xs uppercase font-extrabold tracking-widest text-primary bg-primary-container/15 px-4 py-1.5 rounded-full border border-primary-container/30">
-            Base Oficial de Conhecimento PetSearchers & Faro
+            Manual Oficial PetSearchers & Faro
           </span>
           <h1 class="text-3xl sm:text-5xl font-black text-on-surface tracking-tight mt-2">
             Manual para Reencontrar Pet Desaparecido
@@ -18,11 +18,31 @@ export function renderReunionGuideView(container, showToast) {
           </p>
         </div>
 
-        <!-- Notice Banner -->
-        <div class="bg-primary-container/10 border border-primary-container/30 rounded-2xl p-4 text-center">
-          <p class="text-xs font-bold text-primary">
-            👇 Role a página para ver todos os Manuais Oficiais PetSearchers na íntegra (Instruções Gerais, Cães, Gatos com Vídeo, Antigolpe e Gerador de Cartazes).
-          </p>
+        <!-- Navigation Jump Bar Linking General Guide to Dogs and Cats -->
+        <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-5 shadow-xl space-y-3 text-center">
+          <span class="text-xs uppercase font-bold text-on-surface-variant tracking-wider">Acesso Rápido por Espécie e Downloads PDF:</span>
+          <div class="flex flex-wrap justify-center gap-3 pt-1">
+            <a href="#section-dogs" class="bg-primary-container hover:bg-primary-container/90 text-on-primary-container font-extrabold text-xs sm:text-sm px-5 py-3 rounded-2xl transition-all shadow-md flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">sound_detection_dog_barking</span>
+              <span>Ir para Guia Específico de Cães</span>
+            </a>
+            <a href="#section-cats" class="bg-secondary-container hover:bg-secondary-container/90 text-on-secondary-container font-extrabold text-xs sm:text-sm px-5 py-3 rounded-2xl transition-all shadow-md flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">cat</span>
+              <span>Ir para Guia Específico de Gatos</span>
+            </a>
+            <button id="btn-download-pdf-dogs" class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-xs sm:text-sm px-4 py-3 rounded-2xl border border-outline-variant/60 transition-all flex items-center gap-2 shadow-sm">
+              <span class="material-symbols-outlined text-primary text-base">picture_as_pdf</span>
+              <span>Baixar Guia PDF Cães</span>
+            </button>
+            <button id="btn-download-pdf-cats" class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-xs sm:text-sm px-4 py-3 rounded-2xl border border-outline-variant/60 transition-all flex items-center gap-2 shadow-sm">
+              <span class="material-symbols-outlined text-secondary text-base">picture_as_pdf</span>
+              <span>Baixar Guia PDF Gatos</span>
+            </button>
+            <a href="https://wa.me/5511980008442?text=Oi%2C%20preciso%20de%20ajuda%20para%20encontrar%20meu%20pet%20perdido." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-2xl transition-all flex items-center gap-2 shadow-md">
+              <span class="material-symbols-outlined text-base">chat</span>
+              <span>Falar no WhatsApp PetSearchers</span>
+            </a>
+          </div>
         </div>
 
         <!-- Single Continuous Content Stream -->
@@ -36,7 +56,7 @@ export function renderReunionGuideView(container, showToast) {
 
   // 1. GENERAL INSTRUCTIONS (PetSearchers instrucoes-para-recuperacao)
   const generalGuideHtml = `
-    <div class="space-y-8 animate-fade-in">
+    <div id="section-general" class="space-y-8 animate-fade-in">
       
       <!-- Cuidando de Você Section -->
       <div class="bg-gradient-to-r from-surface-container via-surface-container-high to-surface-container border border-outline-variant/30 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
@@ -69,12 +89,22 @@ export function renderReunionGuideView(container, showToast) {
         </div>
       </div>
 
-      <!-- Intro Section -->
-      <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 space-y-3 shadow-xl">
+      <!-- Intro Section with Links to Specific Dog and Cat Guides -->
+      <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
         <h3 class="text-xl font-bold text-on-surface">Dicas Gerais de Reencontro de Pets Perdidos</h3>
         <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
           Este guia oferece uma base sólida para qualquer pet perdido (cães, gatos, aves ou exóticos). Ter uma estratégia estruturada é o primeiro passo para o sucesso. Respire fundo, vamos começar.
         </p>
+        <div class="pt-2 flex flex-col sm:flex-row gap-3 border-t border-outline-variant/20">
+          <a href="#section-dogs" class="inline-flex items-center gap-2 text-xs font-bold text-primary hover:underline">
+            <span class="material-symbols-outlined text-sm">east</span>
+            <span>Ver Instruções Específicas para Cachorros</span>
+          </a>
+          <a href="#section-cats" class="inline-flex items-center gap-2 text-xs font-bold text-secondary hover:underline">
+            <span class="material-symbols-outlined text-sm">east</span>
+            <span>Ver Instruções Específicas para Gatos (+ Vídeo YouTube)</span>
+          </a>
+        </div>
       </div>
 
       <!-- Protocols in the First Hours -->
@@ -175,13 +205,22 @@ export function renderReunionGuideView(container, showToast) {
 
   // 2. DOG GUIDE (PetSearchers achar-cachorro-desaparecido / guia-de-reencontro-para-cachorros)
   const dogGuideHtml = `
-    <div class="space-y-8 animate-fade-in">
+    <div id="section-dogs" class="space-y-8 animate-fade-in pt-8 border-t-2 border-primary/20">
       
       <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
-        <h2 class="text-2xl font-black text-on-surface flex items-center gap-2">
-          <span class="material-symbols-outlined text-primary">sound_detection_dog_barking</span>
-          <span>Como encontrar cachorro perdido: guia completo para aumentar as chances de reencontro</span>
-        </h2>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <span class="text-xs uppercase font-extrabold tracking-widest text-primary bg-primary-container/20 px-3 py-1 rounded-full border border-primary-container/30">Guia PetSearchers Cães</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-on-surface tracking-tight mt-2 flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary">sound_detection_dog_barking</span>
+              <span>Como encontrar cachorro perdido: guia completo para aumentar as chances de reencontro</span>
+            </h2>
+          </div>
+          <button class="btn-dl-pdf-dogs-action bg-primary text-on-primary font-bold text-xs px-5 py-3 rounded-full hover:bg-primary/90 transition-all flex items-center gap-2 shadow-md flex-shrink-0">
+            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+            <span>Baixar Guia em PDF (Cães)</span>
+          </button>
+        </div>
         <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
           Perder um cão é um momento de angústia profunda, mas saiba que estamos aqui para guiar seus passos. O tempo é seu recurso mais valioso agora, e agir com rapidez e estratégia faz toda a diferença. Criamos um plano organizado para ajudar você a manter a calma e focar nas ações que trazem resultados reais. Você não está sozinho. Respire fundo e vamos começar a busca juntos.
         </p>
@@ -340,30 +379,40 @@ export function renderReunionGuideView(container, showToast) {
     </div>
   `;
 
-  // 3. CAT GUIDE (PetSearchers guia-de-reencontro-para-gatos WITH YOUTUBE VIDEO EMBED)
+  // 3. CAT GUIDE (PetSearchers guia-de-reencontro-para-gatos WITH YOUTUBE VIDEO EMBED + YOUTUBE DIRECT LINK)
   const catGuideHtml = `
-    <div class="space-y-8 animate-fade-in">
+    <div id="section-cats" class="space-y-8 animate-fade-in pt-8 border-t-2 border-secondary/20">
       
       <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
-        <h2 class="text-2xl font-black text-on-surface flex items-center gap-2">
-          <span class="material-symbols-outlined text-secondary">cat</span>
-          <span>Como encontrar gato perdido: guia completo para aumentar as chances de reencontro</span>
-        </h2>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <span class="text-xs uppercase font-extrabold tracking-widest text-secondary bg-secondary-container/20 px-3 py-1 rounded-full border border-secondary-container/30">Guia PetSearchers Gatos</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-on-surface tracking-tight mt-2 flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary">cat</span>
+              <span>Como encontrar gato perdido: guia completo para aumentar as chances de reencontro</span>
+            </h2>
+          </div>
+          <button class="btn-dl-pdf-cats-action bg-secondary text-on-secondary font-bold text-xs px-5 py-3 rounded-full hover:bg-secondary/90 transition-all flex items-center gap-2 shadow-md flex-shrink-0">
+            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+            <span>Baixar Guia em PDF (Gatos)</span>
+          </button>
+        </div>
         <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
           Criamos este guia para ajudar tutores de gatos perdidos a agir rápido, organizar a busca e aumentar as chances de reencontro. Saiba que você não está sozinho nessa jornada e cada passo estratégico aproxima seu pet de casa. Gatos têm um instinto de sobrevivência incrível e muitos são encontrados a poucos metros de casa, apenas esperando o momento em que se sintam seguros para sair do esconderijo.
         </p>
       </div>
 
-      <!-- OFFICIAL PETSEARCHERS YOUTUBE EMBEDDED VIDEO -->
+      <!-- OFFICIAL PETSEARCHERS YOUTUBE EMBEDDED VIDEO + DIRECT LINK -->
       <div class="bg-surface-container border border-tertiary-container/40 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-4">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-outline-variant/20 pb-3">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-red-500 text-2xl">play_circle</span>
             <h3 class="text-lg font-extrabold text-on-surface">Vídeo com Sons para Atrair seu Gato (Canal Oficial PetSearchers)</h3>
           </div>
-          <span class="text-xs text-tertiary font-semibold bg-tertiary-container/10 px-3 py-1 rounded-full border border-tertiary-container/20">
-            Reproduzir na madrugada (02h às 04h)
-          </span>
+          <a href="https://www.youtube.com/watch?v=4RQD-MG3XJU" target="_blank" class="text-xs font-bold text-red-400 hover:text-red-300 flex items-center gap-1 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/30 transition-all">
+            <span>Abrir no YouTube</span>
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+          </a>
         </div>
 
         <p class="text-xs text-on-surface-variant leading-relaxed">
@@ -380,6 +429,13 @@ export function renderReunionGuideView(container, showToast) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
           </iframe>
+        </div>
+
+        <div class="pt-2 text-center">
+          <a href="https://www.youtube.com/watch?v=4RQD-MG3XJU" target="_blank" class="inline-flex items-center gap-2 text-xs font-extrabold text-red-400 hover:underline">
+            <span class="material-symbols-outlined text-base">smart_display</span>
+            <span>Link direto do YouTube: https://www.youtube.com/watch?v=4RQD-MG3XJU</span>
+          </a>
         </div>
       </div>
 
@@ -479,7 +535,7 @@ export function renderReunionGuideView(container, showToast) {
 
   // 4. SCAM PREVENTION CONTENT
   const scamPreventionHtml = `
-    <div class="space-y-8 animate-fade-in">
+    <div id="section-scams" class="space-y-8 animate-fade-in pt-8 border-t-2 border-amber-500/20">
       <div class="bg-gradient-to-r from-amber-500/20 via-surface-container-high to-surface-container border border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-xl space-y-3">
         <div class="inline-flex items-center gap-1.5 text-amber-400 text-xs font-bold uppercase tracking-wider">
           <span class="material-symbols-outlined text-sm">gavel</span>
@@ -513,7 +569,7 @@ export function renderReunionGuideView(container, showToast) {
 
   // 5. POSTER GENERATOR CONTENT
   const posterGeneratorHtml = `
-    <div class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 animate-fade-in">
+    <div id="section-poster" class="bg-surface-container border border-surface-container-highest rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 animate-fade-in pt-8 border-t-2 border-tertiary/20">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-outline-variant/20 pb-4">
         <div>
           <h2 class="text-2xl font-bold text-on-surface flex items-center gap-2">
@@ -582,51 +638,122 @@ export function renderReunionGuideView(container, showToast) {
   `;
 
   const contentEl = container.querySelector('#guide-content');
-  // Render ALL 5 sections sequentially in a single continuous stream
   contentEl.innerHTML = `
-    <div id="section-general" class="space-y-6 border-b border-surface-container-highest pb-12">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary-container/20 text-primary text-xs font-bold uppercase">
-        <span class="material-symbols-outlined text-sm">menu_book</span>
-        <span>Parte 1: Instruções Gerais (Todos os Pets)</span>
-      </div>
-      ${generalGuideHtml}
-    </div>
-
-    <div id="section-dogs" class="space-y-6 border-b border-surface-container-highest pb-12 pt-6">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary-container/20 text-primary text-xs font-bold uppercase">
-        <span class="material-symbols-outlined text-sm">sound_detection_dog_barking</span>
-        <span>Parte 2: Guia Completo para Cachorros</span>
-      </div>
-      ${dogGuideHtml}
-    </div>
-
-    <div id="section-cats" class="space-y-6 border-b border-surface-container-highest pb-12 pt-6">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-container/20 text-secondary text-xs font-bold uppercase">
-        <span class="material-symbols-outlined text-sm">cat</span>
-        <span>Parte 3: Guia Completo para Gatos + Vídeo de Sons do YouTube</span>
-      </div>
-      ${catGuideHtml}
-    </div>
-
-    <div id="section-scams" class="space-y-6 border-b border-surface-container-highest pb-12 pt-6">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold uppercase">
-        <span class="material-symbols-outlined text-sm">gavel</span>
-        <span>Parte 4: Segurança & Antigolpe</span>
-      </div>
-      ${scamPreventionHtml}
-    </div>
-
-    <div id="section-poster" class="space-y-6 pt-6">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-tertiary-container/20 text-tertiary text-xs font-bold uppercase">
-        <span class="material-symbols-outlined text-sm">print</span>
-        <span>Parte 5: Gerador de Cartaz de Busca Impresso</span>
-      </div>
-      ${posterGeneratorHtml}
-    </div>
+    ${generalGuideHtml}
+    ${dogGuideHtml}
+    ${catGuideHtml}
+    ${scamPreventionHtml}
+    ${posterGeneratorHtml}
   `;
 
+  // Attach event listeners
   attachAudioListeners();
   attachPosterListeners();
+  attachPdfDownloadListeners();
+
+  // Scroll to target section if specified
+  if (targetSection === 'dogs') {
+    setTimeout(() => container.querySelector('#section-dogs')?.scrollIntoView({ behavior: 'smooth' }), 200);
+  } else if (targetSection === 'cats') {
+    setTimeout(() => container.querySelector('#section-cats')?.scrollIntoView({ behavior: 'smooth' }), 200);
+  } else if (targetSection === 'general') {
+    setTimeout(() => container.querySelector('#section-general')?.scrollIntoView({ behavior: 'smooth' }), 200);
+  }
+
+  function attachPdfDownloadListeners() {
+    const downloadPdf = (species) => {
+      showToast(`Gerando arquivo PDF do Guia PetSearchers (${species})...`, 'success');
+      
+      const isDog = species === 'Cães';
+      const title = isDog ? 'Guia de Reencontro para Cachorros - PetSearchers' : 'Guia de Reencontro para Gatos - PetSearchers';
+      
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${title}</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 40px; line-height: 1.6; color: #111; }
+            h1 { color: #d97706; font-size: 24px; border-bottom: 2px solid #d97706; padding-bottom: 8px; }
+            h2 { color: #1f2937; font-size: 18px; margin-top: 20px; }
+            ul { margin-bottom: 20px; }
+            li { margin-bottom: 8px; }
+            .box { background: #f3f4f6; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #d97706; }
+            .footer { margin-top: 40px; font-size: 11px; text-align: center; color: #6b7280; border-t: 1px solid #e5e7eb; padding-top: 10px; }
+          </style>
+        </head>
+        <body>
+          <h1>${title}</h1>
+          <p><strong>Manual de Instruções e Busca Estratégica PetSearchers</strong></p>
+          
+          <div class="box">
+            <strong>CUIDANDO DE VOCÊ:</strong><br>
+            A busca por um amigo perdido é exaustiva. Respire fundo, descanse em períodos curtos, delegue tarefas a amigos e foque em um passo de cada vez.
+          </div>
+
+          ${isDog ? `
+            <h2>1. Ação Imediata</h2>
+            <ul>
+              <li>Procure nas redondezas chamando o nome em tom calmo.</li>
+              <li>Leve roupas usadas com seu cheiro, brinquedos e petiscos.</li>
+              <li>Avise vizinhos e porteiros com foto recente.</li>
+              <li>Cheque câmeras de segurança de casas e comércios.</li>
+            </ul>
+
+            <h2>2. Divulgação Local</h2>
+            <ul>
+              <li>Cartazes amarelos flúor com fotos nítidas e telefone visível.</li>
+              <li>Afixar em pet shops, clínicas 24h, praças e pontos de ônibus.</li>
+            </ul>
+
+            <h2>3. Redes Sociais & Tecnologia</h2>
+            <ul>
+              <li>Poste em grupos de bairro no Facebook/WhatsApp.</li>
+              <li>Use anúncios geolocalizados (Meta Ads) num raio de 2 a 5 km.</li>
+            </ul>
+
+            <h2>4. Dicas Avançadas: Caminhos de Cheiro</h2>
+            <p>Arraste roupas usadas com a afinidade do tutor pelo chão até a entrada da sua casa.</p>
+          ` : `
+            <h2>1. Busca Minuciosa Dentro de Casa</h2>
+            <ul>
+              <li>Gatos se escondem no interior de sofás, vãos atrás de geladeiras, forros e prateleiras.</li>
+            </ul>
+
+            <h2>2. Estação de Cheiro</h2>
+            <ul>
+              <li>Coloque a caixa de areia usada na janela ou porta de entrada.</li>
+              <li>Aqueça um sachê de carne/atum para propagar o aroma.</li>
+            </ul>
+
+            <h2>3. Busca na Madrugada (02h às 04h)</h2>
+            <ul>
+              <li>No silêncio da madrugada, chame baixinho e use lanterna para buscar o reflexo dos olhos.</li>
+              <li>Use o vídeo de sons de atração felina no YouTube: https://www.youtube.com/watch?v=4RQD-MG3XJU</li>
+            </ul>
+          `}
+
+          <div class="footer">
+            Documento Oficial Faro • PetSearchers Brasil | www.pet-searchers.com
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      setTimeout(() => {
+        printWindow.print();
+      }, 500);
+    };
+
+    container.querySelectorAll('.btn-dl-pdf-dogs-action, #btn-download-pdf-dogs').forEach(btn => {
+      btn?.addEventListener('click', () => downloadPdf('Cães'));
+    });
+
+    container.querySelectorAll('.btn-dl-pdf-cats-action, #btn-download-pdf-cats').forEach(btn => {
+      btn?.addEventListener('click', () => downloadPdf('Gatos'));
+    });
+  }
 
   function attachAudioListeners() {
     const playAudio = (type) => {
