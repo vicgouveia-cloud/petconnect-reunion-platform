@@ -2,7 +2,7 @@ import { store } from '../store.js';
 
 export function renderReunionGuideView(container, showToast) {
   container.innerHTML = `
-    <!-- Clean PetSearchers Light Style Background -->
+    <!-- Clean PetSearchers Light Theme -->
     <div class="py-12 bg-slate-50 text-slate-800 min-h-screen flex-grow font-sans">
       <div class="max-w-5xl mx-auto px-4 sm:px-8 space-y-12 animate-fade-in">
         
