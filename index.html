@@ -6,6 +6,16 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
+  <script>
+    // Force browser cache bust if build timestamp changes
+    (function() {
+      var currentVer = 'v=' + Date.now();
+      if (!window.location.search.includes('v=')) {
+        var sep = window.location.search ? '&' : '?';
+        window.location.href = window.location.pathname + window.location.search + sep + currentVer + window.location.hash;
+      }
+    })();
+  </script>
   <title>Faro - O Cheiro de Casa | Plataforma de Reencontro de Pets</title>
   
   <!-- Tailwind CSS CDN -->
@@ -70,7 +80,7 @@
       }
     }
   </script>
-  <script type="module" crossorigin src="./assets/index-DSrehSsJ.js"></script>
+  <script type="module" crossorigin src="./assets/index-Cu3d19cl.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-Cxs-YpVp.css">
 </head>
 <body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-sans overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container transition-colors duration-300">
